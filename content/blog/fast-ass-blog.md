@@ -7,7 +7,8 @@ tags:
   - tag1
   - tag2
 ---
-#FAST ASS BLOG
+
+# FAST ASS BLOG
 This is a MoFo fast ass blog written in **Vue.js**, **Nuxt** and hosted on **Netlify**
 
 [Netlify](https://netlify.com)

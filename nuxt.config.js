@@ -21,7 +21,7 @@ export default {
         {
           test: /\.md$/,
           loader: 'frontmatter-markdown-loader',
-          options: { vue: true }
+          // options: { vue: true }
         }
       )
     }
