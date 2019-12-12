@@ -1,9 +1,17 @@
 <template>
-  <section class="post">
-    <h1>{{ title }}</h1>
-    <img v-lazy="thumbnail" class="thumbnail" :alt="title" />
-    <div class="post-content" v-html="html"></div>
-  </section>
+    <div>
+        <div class="intro">
+            <div class="intro__description">
+              <span>{{date}}</span>
+                <h1 class="intro__description__title">{{ title }}</h1>
+              <p>{{description}}</p>
+            </div>
+            <div class="intro__thumbnail">
+                <img :src="thumbnail" class="thumbnail" :alt="title"/>
+            </div>
+        </div>
+        <div class="content" v-html="html"></div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -19,6 +27,7 @@
         date,
         summary,
         thumbnail,
+        description,
         title,
         type,
         update
@@ -46,6 +55,7 @@
         updated,
         type,
         thumbnail,
+        description,
         summary,
         slug,
         html: post.html
@@ -55,4 +65,22 @@
 </script>
 
 <style>
+    .intro {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 300px;
+      overflow: hidden;
+    }
+    .intro__description{
+      max-width: 300px;
+      justify-self: flex-end;
+      align-self: center;
+      margin: 30px;
+    }
+  .content{
+    display: grid;
+    margin: auto;
+    margin-top: 50px;
+    max-width: 500px;
+  }
 </style>

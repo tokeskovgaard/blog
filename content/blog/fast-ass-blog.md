@@ -1,5 +1,8 @@
 ---
-subject: Hello
+title: Hello from the fast ass blog
+description: This is one hell of a fast motherfucka
+date: 2019-12-12
+thumbnail: /sasha-pleshco-dyUoc-027xM-unsplash.jpg
 tags:
   - tag1
   - tag2
@@ -9,6 +12,6 @@ This is a MoFo fast ass blog written in **Vue.js**, **Nuxt** and hosted on **Net
 
 [Netlify](https://netlify.com)
 
-[Inspiration](https://nuxt-markdown-blog-starter.netlify.com/blog/blog-using-vue-nuxt-markdown/)
+[Inspiration](https://nu~~~~xt-markdown-blog-starter.netlify.com/blog/blog-using-vue-nuxt-markdown/)
 
 /Toke Reimer Skovgaard

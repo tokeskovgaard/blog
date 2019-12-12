@@ -8,22 +8,18 @@
             <h2 class="subtitle">
                 My fast ass blog
             </h2>
-            <div class="links">
-                <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-                    Documentation
-                </a>
-                <a
-                        href="https://github.com/nuxt/nuxt.js"
-                        target="_blank"
-                        class="button--grey"
-                >
-                    GitHub
-                </a>
-            </div>
-            <div v-for="blog of blogList">
-                <a :href="`blog/${blog.link}`">{{blog.link}}</a>
-                {{blog.attributes}}
-            </div>
+            <ul class="blogs">
+                <li v-for="blog of blogList" class="blog">
+                    <a :href="`blog/${blog.link}`">
+                        <div class="image-placeholder">
+                            <img :src="blog.attributes.thumbnail">
+                        </div>
+                        <h3 class="blog__title">{{blog.attributes.title}}</h3>
+                        <p class="blog__description">{{blog.attributes.description}}</p>
+
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -56,7 +52,7 @@
   }
 </script>
 
-<style>
+<style scoped>
     .container {
         margin: 0 auto;
         min-height: 100vh;
@@ -84,7 +80,19 @@
         padding-bottom: 15px;
     }
 
-    .links {
-        padding-top: 15px;
+    li{list-style: none;}
+
+    .blogs {
+
     }
+
+    .blog {
+        max-width: 33%;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+    .blog__title {}
+    .blog__description {}
 </style>
