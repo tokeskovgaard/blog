@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div v-for="blog of blogList">
-                {{blog}}
+                <a :href="`blog/${blog.link}`">{{blog.link}}</a>
             </div>
         </div>
     </div>
