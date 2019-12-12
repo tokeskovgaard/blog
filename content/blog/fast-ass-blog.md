@@ -1,3 +1,9 @@
+---
+subject: Hello
+tags:
+  - tag1
+  - tag2
+---
 #FAST ASS BLOG
 This is a MoFo fast ass blog written in **Vue.js**, **Nuxt** and hosted on **Netlify**
 
