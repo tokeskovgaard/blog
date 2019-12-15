@@ -2,7 +2,7 @@
 title: Hello from the fast ass blog
 description: This is one hell of a fast motherfucka
 date: 2019-12-12
-thumbnail: /sasha-pleshco-dyUoc-027xM-unsplash.jpg
+thumbnail: /alexander-dummer-aS4Duj2j7r4-unsplash.jpg
 tags:
   - tag1
   - tag2

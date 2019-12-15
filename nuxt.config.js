@@ -1,4 +1,8 @@
-import blogs from './content/blogs.json'
+
+const fs = require('fs');
+const path = require('path');
+const files = fs.readdirSync('./content/blog/');
+console.log(files);
 
 export default {
   env: {},
@@ -20,7 +24,7 @@ export default {
       config.module.rules.push(
         {
           test: /\.md$/,
-          loader: 'frontmatter-markdown-loader',
+          loader: 'frontmatter-markdown-loader'
           // options: { vue: true }
         }
       )
@@ -33,7 +37,6 @@ export default {
     }
   },
   generate: {
-    routes: [].concat(blogs.map(blog => `/blog/${blog.slug}`))
-    // routes: [...blogs.map(blog => `/blog/${blog}`)]
+    routes: [...files.map(blog => `/blog/${path.parse(blog).name}`)]
   }
 }

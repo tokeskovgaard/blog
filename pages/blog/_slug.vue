@@ -2,9 +2,9 @@
     <div>
         <div class="intro">
             <div class="intro__description">
-              <span>{{date}}</span>
+                <span>{{date}}</span>
                 <h1 class="intro__description__title">{{ title }}</h1>
-              <p>{{description}}</p>
+                <p>{{description}}</p>
             </div>
             <div class="intro__thumbnail">
                 <img :src="thumbnail" class="thumbnail" :alt="title"/>
@@ -15,6 +15,8 @@
 </template>
 
 <script lang="ts">
+  import { format } from 'date-fns'
+
   export default {
     async asyncData({ params }) {
       const post = await import(`~/content/blog/${params.slug}.md`)
@@ -49,7 +51,7 @@
         title,
         author,
         authorlink,
-        date,
+        date: format(publishedDate, 'd MMMM yyyy'),
         update,
         published,
         updated,
@@ -65,22 +67,42 @@
 </script>
 
 <style>
+    :root {
+        --context-max-width: 600px;
+    }
     .intro {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      grid-template-rows: 300px;
-      overflow: hidden;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-auto-rows: 300px;
+        overflow: hidden;
     }
-    .intro__description{
-      max-width: 300px;
-      justify-self: flex-end;
-      align-self: center;
-      margin: 30px;
+    @media (min-width: 1000px) {
+        .intro {
+            grid-template-columns: 50% 50%;
+        }
+
+        .intro__description {
+            justify-self: flex-end;
+        }
     }
-  .content{
-    display: grid;
-    margin: auto;
-    margin-top: 50px;
-    max-width: 500px;
-  }
+
+    .intro__thumbnail {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+    .intro__description {
+        max-width: 300px;
+        /*justify-self: center;*/
+        align-self: center;
+        margin: 30px;
+    }
+
+    .content {
+
+        display: grid;
+        margin: auto;
+        padding: 1rem;
+        max-width: var(--context-max-width);
+    }
 </style>

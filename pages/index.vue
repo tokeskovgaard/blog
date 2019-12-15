@@ -15,7 +15,6 @@
                         </div>
                         <h3 class="blog__title">{{blog.attributes.title}}</h3>
                         <p class="blog__description">{{blog.attributes.description}}</p>
-
                     </a>
                 </li>
             </ul>
@@ -32,7 +31,7 @@
       Logo
     },
     async asyncData({ app }) {
-      async function awaitImport(blog) {
+      async function lookupBlog(blog) {
         const wholeMD = await import(`~/content/blog/${blog.slug}.md`)
         return {
           attributes: wholeMD.attributes,
@@ -40,13 +39,8 @@
         }
       }
 
-      return await Promise.all(
-        blogs.map(blog => awaitImport(blog))
-      ).then(res => {
-        return {
-          blogList: res
-        }
-      })
+      const res = await Promise.all(blogs.map(blog => lookupBlog(blog)))
+      return { blogList: res }
     }
   }
 </script>
@@ -103,6 +97,7 @@
     .blog__image {overflow: hidden;}
 
     .blog__title {color: black; }
+
     .blog:hover .blog__title {color: rebeccapurple;}
 
     .blog__description {color: grey;}
