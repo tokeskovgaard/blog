@@ -2,7 +2,6 @@
     <div>
         <nav>
             <a href="/">Home</a>
-            <a href="/blog">Posts</a>
         </nav>
         <nuxt/>
     </div>

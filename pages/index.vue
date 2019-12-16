@@ -1,104 +1,79 @@
 <template>
     <div class="container">
-        <div>
-            <h1 class="title">
-                blog
-            </h1>
-            <h2 class="subtitle">
-                My fast ass blog
-            </h2>
-            <ul class="blogs">
-                <li v-for="blog of blogList">
-                    <a :href="`blog/${blog.link}`" class="blog">
-                        <div class="blog__image">
-                            <img :src="blog.attributes.thumbnail">
-                        </div>
-                        <h3 class="blog__title">{{blog.attributes.title}}</h3>
-                        <p class="blog__description">{{blog.attributes.description}}</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <h1>My fast blog</h1>
+        <h2>Posts</h2>
+        <ul class="posts">
+            <li v-for="post of posts" class="post">
+                <a :href="`/blog/${post.link}`">
+                    <img class="blog__image" :src="post.attributes.thumbnail">
+                    <h3 class="blog__title">{{post.attributes.title}}</h3>
+                    <p class="blog__description">{{post.attributes.description}}</p>
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script lang="ts">
   import Logo from '~/components/Logo.vue'
-  import blogs from '~/content/blogs.json'
+  import posts from '~/content/blogs.json'
 
   export default {
     components: {
       Logo
     },
     async asyncData({ app }) {
-      async function lookupBlog(blog) {
-        const wholeMD = await import(`~/content/blog/${blog.slug}.md`)
+      async function lookupBlog(post) {
+        const wholeMD = await import(`~/content/blog/${post.slug}.md`)
         return {
           attributes: wholeMD.attributes,
-          link: blog.slug
+          link: post.slug
         }
       }
 
-      const res = await Promise.all(blogs.map(blog => lookupBlog(blog)))
-      return { blogList: res }
+      const res = await Promise.all(posts.map(post => lookupBlog(post)))
+      return { posts: res }
     }
   }
 </script>
 
 <style scoped>
     .container {
-        margin: 0 auto;
+        margin: 1rem;
         min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
     }
 
-    .title {
-        font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-        'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        display: block;
-        font-weight: 300;
-        font-size: 100px;
-        color: #35495e;
-        letter-spacing: 1px;
-    }
-
-    .subtitle {
-        font-weight: 300;
-        font-size: 42px;
-        color: #526488;
-        word-spacing: 5px;
-        padding-bottom: 15px;
-    }
-
-    li {list-style: none;}
-
-    .blogs {
-
-    }
-
-    .blog {
-        max-width: 33%;
+    .posts {
         display: grid;
-        grid-auto-columns: 1fr;
-        grid-auto-rows: 200px auto auto;
-        overflow: hidden;
-        text-align: left;
+        grid-template-columns: 1fr;
+        grid-row-gap: 2rem;
+        padding: 0;
         text-decoration: none;
     }
 
-    img {
-        max-width: 100%;
-        height: auto;
+    .post {
+        list-style: none; width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        text-align: left;
     }
 
-    .blog__image {overflow: hidden;}
+    .blog__image {
+        width: 100%;
+        height: auto;
+    }
 
     .blog__title {color: black; }
 
     .blog:hover .blog__title {color: rebeccapurple;}
 
     .blog__description {color: grey;}
+
+    @media (min-width: 1000px) {
+        .posts {
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 1rem;
+        }
+    }
 </style>
