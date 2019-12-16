@@ -1,8 +1,7 @@
-
-const fs = require('fs');
-const path = require('path');
-const files = fs.readdirSync('./content/blog/');
-console.log(files);
+const fs = require('fs')
+const path = require('path')
+const files = fs.readdirSync('./content/blog/')
+console.log(files)
 
 export default {
   env: {},
@@ -30,7 +29,17 @@ export default {
       )
     }
   },
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    '@bazzite/nuxt-optimized-images'
+  ],
+
+  // @bazzite/nuxt-optimized-images
+  optimizedImages: {
+    optimizeImages: true,
+    optimizeImagesInDev: true
+  },
+
   typescript: {
     typeCheck: {
       // eslint: true
