@@ -2,9 +2,9 @@
     <div>
         <div class="intro">
             <div class="intro__description">
-                <span>{{date}}</span>
+                <div class="intro__description__preTitle">{{date}}</div>
                 <h1 class="intro__description__title">{{ title }}</h1>
-                <p>{{description}}</p>
+                <p class="intro__description__postTitle">{{description}}</p>
             </div>
             <div class="intro__thumbnail">
                 <app-image :src="thumbnail" class="thumbnail" :alt="title"/>
@@ -16,11 +16,16 @@
 
 <script lang="ts">
   import { format } from 'date-fns'
+  import { gsap } from "gsap/dist/gsap";
   import Image from '~/components/Image.vue'
 
   export default {
     components: {
       'app-image': Image
+    },
+
+    mounted() {
+      gsap.from(".intro__description__postTitle", {x: 100, opacity: 0, duration: 1, delay: 0.0});
     },
 
     async asyncData({ params }) {

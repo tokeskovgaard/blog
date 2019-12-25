@@ -40,7 +40,7 @@
         margin: 0;
     }
 
-    h1 { font-size: 4rem; }
+    h1 { font-size: 2rem; }
     h2 { font-size: 3rem; margin-top: 1rem; margin-bottom: 0.5rem;}
     h3 { font-size: 2.25rem; }
     h4 { font-size: 1.875rem; }
