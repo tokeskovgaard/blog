@@ -5,7 +5,7 @@
         <ul class="posts">
             <li v-for="post of posts" class="post">
                 <a :href="`/blog/${post.link}`">
-                    <img :src="post.attributes.thumbnail" />
+                    <app-image :src="post.attributes.thumbnail"/>
                     <h3 class="blog__title">{{post.attributes.title}}</h3>
                     <p class="blog__description">{{post.attributes.description}}</p>
                 </a>
@@ -16,11 +16,12 @@
 
 <script lang="ts">
   import Logo from '~/components/Logo.vue'
+  import Image from '~/components/Image.vue'
   import posts from '~/content/blogs.json'
 
   export default {
     components: {
-      Logo
+      Logo, 'app-image':Image
     },
     async asyncData({ app }) {
       async function lookupBlog(post) {

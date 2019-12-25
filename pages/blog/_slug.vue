@@ -7,7 +7,7 @@
                 <p>{{description}}</p>
             </div>
             <div class="intro__thumbnail">
-                <img :src="thumbnail" class="thumbnail" :alt="title"/>
+                <app-image :src="thumbnail" class="thumbnail" :alt="title"/>
             </div>
         </div>
         <div class="content" v-html="html"></div>
@@ -16,8 +16,13 @@
 
 <script lang="ts">
   import { format } from 'date-fns'
+  import Image from '~/components/Image.vue'
 
   export default {
+    components: {
+      'app-image': Image
+    },
+
     async asyncData({ params }) {
       const post = await import(`~/content/blog/${params.slug}.md`)
       const attr = post.attributes
@@ -70,12 +75,14 @@
     :root {
         --context-max-width: 600px;
     }
+
     .intro {
         display: grid;
         grid-template-columns: 100%;
         grid-auto-rows: 300px;
         overflow: hidden;
     }
+
     @media (min-width: 1000px) {
         .intro {
             grid-template-columns: 50% 50%;
@@ -91,6 +98,7 @@
         height: 100%;
         width: 100%;
     }
+
     .intro__description {
         max-width: 300px;
         /*justify-self: center;*/
