@@ -5,12 +5,7 @@
         <ul class="posts">
             <li v-for="post of posts" class="post">
                 <a :href="`/blog/${post.link}`">
-                    <picture class="blog__image">
-                        <source :src="require('~/assets/alexander-dummer-aS4Duj2j7r4-unsplash.jpg?lqip')"  type="image/jpeg">
-                        <source :srcSet="require(`~/assets/alexander-dummer-aS4Duj2j7r4-unsplash.jpg?webp`)" type="image/webp" />
-                        <source :srcSet="require(`~/assets/alexander-dummer-aS4Duj2j7r4-unsplash.jpg`)" type="image/jpeg" />
-                        <img :src="require(`~/assets/alexander-dummer-aS4Duj2j7r4-unsplash.jpg`)" />
-                    </picture>
+                    <img :src="post.attributes.thumbnail" />
                     <h3 class="blog__title">{{post.attributes.title}}</h3>
                     <p class="blog__description">{{post.attributes.description}}</p>
                 </a>
@@ -64,10 +59,14 @@
         text-align: left;
     }
 
+    .post a {
+        text-decoration: none;
+    }
+
+
     .blog__image,
     .blog__image * {
         width: 100%;
-        height: 400px;
         object-fit: cover;
     }
 

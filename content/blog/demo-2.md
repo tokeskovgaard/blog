@@ -2,7 +2,7 @@
 title: Demo 2
 description: This is one hell of a fast motherfucka demo 2
 date: 2019-12-12
-thumbnail: '~/assets/alexander-dummer-aS4Duj2j7r4-unsplash.jpg'
+thumbnail: '~/static/alexander-dummer-aS4Duj2j7r4-unsplash.jpg'
 tags:
   - tag1
   - tag2

@@ -30,15 +30,8 @@ export default {
     }
   },
   modules: [
-    '@nuxtjs/axios',
-    '@bazzite/nuxt-optimized-images'
+    '@nuxtjs/axios'
   ],
-
-  // @bazzite/nuxt-optimized-images
-  optimizedImages: {
-    optimizeImages: true,
-    optimizeImagesInDev: true
-  },
 
   typescript: {
     typeCheck: {
