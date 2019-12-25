@@ -1,5 +1,5 @@
 <template>
-    <img :src="src">
+    <img :src="src" >
 </template>
 <script type="ts">
   export default {
@@ -14,7 +14,8 @@
 <style scoped>
   img {
       width: 100%;
-      object-fit: cover;
       height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
   }
 </style>

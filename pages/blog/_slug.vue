@@ -98,12 +98,6 @@
         }
     }
 
-    .intro__thumbnail {
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-    }
-
     .intro__description {
         max-width: 300px;
         /*justify-self: center;*/
@@ -112,7 +106,6 @@
     }
 
     .content {
-
         display: grid;
         margin: auto;
         padding: 1rem;

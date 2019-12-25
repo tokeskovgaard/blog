@@ -65,12 +65,7 @@
     }
 
 
-    .blog__image,
-    .blog__image * {
-        width: 100%;
-        object-fit: cover;
-    }
-
+    .post:hover .blog__title{ color: #136207;}
     .blog__title {color: black; }
 
     .blog:hover .blog__title {color: rebeccapurple;}
