@@ -18,7 +18,7 @@ export default {
   loading: { color: '#fff' },
   buildModules: ['@nuxt/typescript-build'],
   build: {
-    extend(config) {
+    extend (config, { isDev, isClient, loaders: { vue } }) {
       // add frontmatter-markdown-loader
       config.module.rules.push(
         {
@@ -27,16 +27,35 @@ export default {
           // options: { vue: true }
         }
       )
-    }
+      // if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src']
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+      // }
+      }
   },
   modules: [
     '@nuxtjs/axios',
-    '@bazzite/nuxt-optimized-images'
+    '@bazzite/nuxt-optimized-images',
+    '~/plugins/vue-lazysizes.client.js'
   ],
 
   optimizedImages: {
-    optimizeImages: true
-    // optimizeImagesInDev: true
+    inlineImageLimit: -1,
+    handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
+    optimizeImages: true,
+    optimizeImagesInDev: false,
+    defaultImageLoader: 'img-loader',
+    mozjpeg: {
+      quality: 85
+    },
+    optipng: false,
+    pngquant: {
+      speed: 7,
+      quality: [0.65, 0.8]
+    },
+    webp: {
+      quality: 85
+    }
   },
 
   typescript: {

@@ -1,7 +1,12 @@
 <template>
-    <div>
+    <figure>
+<!--        <picture>-->
+<!--            <source :data-srcset="require(`~assets/${src}?webp`)" type="image/webp">-->
+<!--            <source :data-srcset="require(`~assets/${src}`)" type="image/jpg">-->
+<!--            <img :data-src="require(`~assets/${src}`)" class="lazyload" alt="Alternate text for the image">-->
+<!--        </picture>-->
         <img ref="image" :src="require(`~/assets/${src}?lqip`)" data-state="lqip">
-    </div>
+    </figure>
 </template>
 <script type="ts">
   export default {
