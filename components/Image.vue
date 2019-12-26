@@ -8,7 +8,7 @@
         <!--        <img ref="image" :src="require(`~/assets/${src}?sqip`)" class="lazyload">-->
         <img
                 data-sizes="auto"
-                :src="require(`~/assets/${src}?sqip`)"
+                :src="require(`~/assets/images/${src}?sqip`)"
                 :data-srcset="` ${require(`~/assets/images/${src}?resize&size=300`)} 300w,
                                 ${require(`~/assets/images/${src}?resize&size=600`)} 600w,
                                 ${require(`~/assets/images/${src}?resize&size=900`)} 900w,
