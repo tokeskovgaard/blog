@@ -7,6 +7,9 @@ export default {
   env: {},
   mode: 'universal',
   head: {
+    htmlAttrs: {
+      lang: 'da',
+    },
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
