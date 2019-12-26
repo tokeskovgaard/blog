@@ -84,7 +84,7 @@
     .intro {
         display: grid;
         grid-template-columns: 100%;
-        grid-auto-rows: 300px;
+        /*grid-auto-rows: 300px;*/
         overflow: hidden;
     }
 

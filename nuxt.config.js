@@ -1,15 +1,15 @@
+// import { Configuration } from '@nuxt/types'
+
 const fs = require('fs')
 const path = require('path')
 const files = fs.readdirSync('./content/blog/')
 console.log(files)
 
-export default {
+const nuxtConfig = {
   env: {},
   mode: 'universal',
   head: {
-    htmlAttrs: {
-      lang: 'da',
-    },
+    htmlAttrs: { lang: 'da' },
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -21,7 +21,7 @@ export default {
   loading: { color: '#fff' },
   buildModules: ['@nuxt/typescript-build'],
   build: {
-    extend (config, { isDev, isClient, loaders: { vue } }) {
+    extend(config, ctx) {
       // add frontmatter-markdown-loader
       config.module.rules.push(
         {
@@ -31,14 +31,14 @@ export default {
         }
       )
       // if (isClient) {
-        vue.transformAssetUrls.img = ['data-src', 'src']
-        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+      ctx.loaders.vue.transformAssetUrls.img = ['data-src', 'src']
+      ctx.loaders.vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       // }
-      }
+    }
   },
   modules: [
     '@nuxtjs/axios',
-    '@bazzite/nuxt-optimized-images',
+    '@bazzite/nuxt-optimized-images'
 
   ],
 
@@ -51,7 +51,6 @@ export default {
     inlineImageLimit: -1,
     handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
     optimizeImages: true,
-    optimizeImagesInDev: false,
     defaultImageLoader: 'img-loader',
     mozjpeg: {
       quality: 85
@@ -75,3 +74,5 @@ export default {
     routes: [...files.map(blog => `/blog/${path.parse(blog).name}`)]
   }
 }
+
+export default nuxtConfig

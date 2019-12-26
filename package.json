@@ -15,8 +15,10 @@
     "@nuxtjs/axios": "5.8.0",
     "gsap": "^3.0.4",
     "lazysizes": "^5.2.0",
+    "node-sass": "^4.13.0",
     "nuxt": "2.10.2",
     "nuxt-property-decorator": "2.5.0",
+    "sass-loader": "^8.0.0",
     "vuex-class": "0.3.2"
   },
   "devDependencies": {

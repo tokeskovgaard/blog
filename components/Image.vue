@@ -1,11 +1,5 @@
 <template>
-    <figure>
-        <!--        <picture>-->
-        <!--            <source :data-srcset="require(`~assets/${src}?webp`)" type="image/webp">-->
-        <!--            <source :data-srcset="require(`~assets/${src}`)" type="image/jpg">-->
-        <!--            <img :data-src="require(`~assets/${src}`)" class="lazyload" alt="Alternate text for the image">-->
-        <!--        </picture>-->
-        <!--        <img ref="image" :src="require(`~/assets/${src}?sqip`)" class="lazyload">-->
+    <figure :data-aspect-ratio="aspectRatio">
         <img
                 data-sizes="auto"
                 :src="require(`~/assets/images/${src}?sqip`)"
@@ -31,27 +25,24 @@
       alt: {
         type: String,
         required: false,
-        default: "Image of something"
+        default: 'Image of something'
+      },
+      aspectRatio: {
+        default: '16:9',
+        required: false,
+        type: String
       }
     },
-
-      // data: () => {
-      //   return {
-      //     imageSrc: null
-      //   }
-      // },
-      // mounted() {
-      //   fetch(require(`~/assets/${this.src}`))
-      //     .then(data => {
-      //       let imageElement = this.$refs.image;
-      //       // imageElement.setAttribute("src",data.url);
-      //       // this.imageSrc = data.url;
-      //       console.log(data)
-      //     })
-      // }
+    data: function() {
+      return {
+        sizes: [600,1200,2000]
+      }
     }
+
+  }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+
     img {
         max-width: 100%;
         max-height: 100%;
@@ -59,5 +50,26 @@
         height: 100%;
         object-fit: cover;
         object-position: 50% 50%;
+    }
+
+    @mixin aspect-ratio($width, $height) {
+        position: relative;
+        &:before {
+            display: block;
+            content: "";
+            width: 100%;
+            padding-top: ($height / $width) * 100%;
+        }
+        > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    [data-aspect-ratio="16:9"]{
+        @include aspect-ratio(16,9);
     }
 </style>
