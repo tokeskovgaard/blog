@@ -24,6 +24,7 @@
       LazyImage
     },
 
+    transition: "fade",
     mounted() {
       gsap.from(".intro__description__postTitle", {x: 100, opacity: 0, duration: 1, delay: 0.0});
     },

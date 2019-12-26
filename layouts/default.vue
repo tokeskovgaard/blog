@@ -1,7 +1,7 @@
 <template>
     <div>
         <nav>
-            <a href="/">Home</a>
+            <nuxt-link to="/">Home</nuxt-link>
         </nav>
         <nuxt/>
     </div>

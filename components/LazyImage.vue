@@ -5,11 +5,8 @@
                 :src="require(`~/assets/images/${src}?sqip`)"
                 :data-srcset="`
                                 ${require(`~/assets/images/${src}?webp?resize&size=600`)} 600w,
-                                ${require(`~/assets/images/${src}?resize&size=600`)} 600w,
                                 ${require(`~/assets/images/${src}?webp?resize&size=1200`)} 1200w,
-                                ${require(`~/assets/images/${src}?resize&size=1200`)} 1200w,
-                                ${require(`~/assets/images/${src}?webp?resize&size=2000`)} 2000w,
-                                ${require(`~/assets/images/${src}?resize&size=2000`)} 2000w
+                                ${require(`~/assets/images/${src}?webp?resize&size=2000`)} 2000w
                                `"
                 :alt="alt"
                 class="lazyload"/>

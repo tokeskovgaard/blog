@@ -4,11 +4,11 @@
         <h2>Posts</h2>
         <ul class="posts">
             <li v-for="post of posts" class="post">
-                <a :href="`/blog/${post.link}`">
+                <nuxt-link :to="`/blog/${post.link}`">
                     <LazyImage :src="post.attributes.thumbnail"/>
                     <h3 class="blog__title">{{post.attributes.title}}</h3>
                     <p class="blog__description">{{post.attributes.description}}</p>
-                </a>
+                </nuxt-link>
             </li>
         </ul>
     </div>
@@ -17,14 +17,17 @@
 <script lang="ts">
   import Logo from '~/components/Logo.vue'
   import LazyImage from '~/components/LazyImage.vue'
-  import { getPostFiles } from '~/utilities/posts'
+  import posts from '~/content/blogs.json'
 
   export default {
     components: {
       Logo, LazyImage
     },
 
+    transition: 'fade',
+
     async asyncData({ app }) {
+
       async function lookupBlog(post) {
         const wholeMD = await import(`~/content/blog/${post.slug}.md`)
         return {
@@ -32,14 +35,13 @@
           link: post.slug
         }
       }
-
-      const res = await Promise.all(getPostFiles().map(post => lookupBlog(post)))
+      const res = await Promise.all(posts.map(post => lookupBlog(post)))
       return { posts: res }
     }
   }
 </script>
 
-<style scoped>
+<style lang="scss">
     .container {
         margin: 1rem;
         min-height: 100vh;
@@ -66,7 +68,8 @@
     }
 
 
-    .post:hover .blog__title{ color: #136207;}
+    .post:hover .blog__title { color: #136207;}
+
     .blog__title {color: black; }
 
     .blog:hover .blog__title {color: rebeccapurple;}
@@ -79,4 +82,7 @@
             grid-column-gap: 1rem;
         }
     }
+
+
+
 </style>

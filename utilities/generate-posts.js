@@ -6,7 +6,7 @@ const parseMarkdown = require('front-matter-markdown')
  * @param {string} dir
  * @returns {Array} Array of objects
  */
-export function getPostFiles(): [] {
+function generateBlogMetadata() {
   const dir = "content/blog"
   const files = fs.readdirSync(dir)
 
@@ -22,6 +22,9 @@ export function getPostFiles(): [] {
     return { date, slug }
   })
   fileArray.sort((a, b) => b.date.getTime() - a.date.getTime())
-  return fileArray
+
+  fs.writeFileSync("content/blogs.json", JSON.stringify(fileArray))
+  // return fileArray
 }
 
+generateBlogMetadata();

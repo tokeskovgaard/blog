@@ -1,4 +1,6 @@
 // import { Configuration } from '@nuxt/types'
+import pkg from './package.json'
+import './utilities/generate-posts'
 
 const fs = require('fs')
 const path = require('path')
@@ -18,11 +20,12 @@ const nuxtConfig = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  css: ["~/assets/styles/transitions.scss"],
   loading: { color: '#fff' },
   buildModules: ['@nuxt/typescript-build'],
   build: {
     extend(config, ctx) {
-      config.node = { fs: 'empty' }
+      // config.node = { fs: 'empty' }
       // add frontmatter-markdown-loader
       config.module.rules.push(
         {

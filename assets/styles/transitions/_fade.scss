@@ -1,0 +1,15 @@
+
+$t-duration: 500ms;
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: $t-duration;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+ }
+
