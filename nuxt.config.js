@@ -36,8 +36,13 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@bazzite/nuxt-optimized-images',
-    '~/plugins/vue-lazysizes.client.js'
+
   ],
+
+  plugins: [ {
+    src: "~/plugins/vue-lazysizes.js",
+    mode: 'client'
+  }],
 
   optimizedImages: {
     inlineImageLimit: -1,
