@@ -22,6 +22,7 @@ const nuxtConfig = {
   buildModules: ['@nuxt/typescript-build'],
   build: {
     extend(config, ctx) {
+      config.node = { fs: 'empty' }
       // add frontmatter-markdown-loader
       config.module.rules.push(
         {
@@ -30,10 +31,10 @@ const nuxtConfig = {
           // options: { vue: true }
         }
       )
-      // if (isClient) {
-      ctx.loaders.vue.transformAssetUrls.img = ['data-src', 'src']
-      ctx.loaders.vue.transformAssetUrls.source = ['data-srcset', 'srcset']
-      // }
+      if (ctx.isClient) {
+        ctx.loaders.vue.transformAssetUrls.img = ['data-src', 'src']
+        ctx.loaders.vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+      }
     }
   },
   modules: [
@@ -42,8 +43,8 @@ const nuxtConfig = {
 
   ],
 
-  plugins: [ {
-    src: "~/plugins/vue-lazysizes.js",
+  plugins: [{
+    src: '~/plugins/vue-lazysizes.js',
     mode: 'client'
   }],
 

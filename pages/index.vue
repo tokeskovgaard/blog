@@ -17,7 +17,7 @@
 <script lang="ts">
   import Logo from '~/components/Logo.vue'
   import Image from '~/components/Image.vue'
-  import posts from '~/content/blogs.json'
+  import { getPostFiles } from '~/utilities/posts'
 
   export default {
     components: {
@@ -32,7 +32,7 @@
         }
       }
 
-      const res = await Promise.all(posts.map(post => lookupBlog(post)))
+      const res = await Promise.all(getPostFiles().map(post => lookupBlog(post)))
       return { posts: res }
     }
   }
