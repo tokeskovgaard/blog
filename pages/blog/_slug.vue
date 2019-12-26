@@ -7,7 +7,7 @@
                 <p class="intro__description__postTitle">{{description}}</p>
             </div>
             <div class="intro__thumbnail">
-                <app-image :src="thumbnail" class="thumbnail" :alt="title"/>
+                <LazyImage :src="thumbnail" class="thumbnail" :alt="title"/>
             </div>
         </div>
         <div class="content" v-html="html"></div>
@@ -17,11 +17,11 @@
 <script lang="ts">
   import { format } from 'date-fns'
   import { gsap } from "gsap/dist/gsap";
-  import Image from '~/components/Image.vue'
+  import LazyImage from '~/components/LazyImage.vue'
 
   export default {
     components: {
-      'app-image': Image
+      LazyImage
     },
 
     mounted() {
@@ -100,7 +100,6 @@
 
     .intro__description {
         max-width: 300px;
-        /*justify-self: center;*/
         align-self: center;
         margin: 30px;
     }
@@ -111,4 +110,5 @@
         padding: 1rem;
         max-width: var(--context-max-width);
     }
+
 </style>

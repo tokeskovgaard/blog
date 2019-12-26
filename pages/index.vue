@@ -5,7 +5,7 @@
         <ul class="posts">
             <li v-for="post of posts" class="post">
                 <a :href="`/blog/${post.link}`">
-                    <app-image :src="post.attributes.thumbnail"/>
+                    <LazyImage :src="post.attributes.thumbnail"/>
                     <h3 class="blog__title">{{post.attributes.title}}</h3>
                     <p class="blog__description">{{post.attributes.description}}</p>
                 </a>
@@ -16,13 +16,14 @@
 
 <script lang="ts">
   import Logo from '~/components/Logo.vue'
-  import Image from '~/components/Image.vue'
+  import LazyImage from '~/components/LazyImage.vue'
   import { getPostFiles } from '~/utilities/posts'
 
   export default {
     components: {
-      Logo, 'app-image':Image
+      Logo, LazyImage
     },
+
     async asyncData({ app }) {
       async function lookupBlog(post) {
         const wholeMD = await import(`~/content/blog/${post.slug}.md`)
